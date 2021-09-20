@@ -1,8 +1,17 @@
 package hh.swd20.Bookstore.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity // kuvataan vastaavan tietokantataulun rakenne
 public class Book {
 
+	@Id // primary key
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	// attribuutit
+	private Long id;
 	private String title;
 	private String author;
 	private int year;
@@ -29,6 +38,10 @@ public class Book {
 	}
 
 	// setterit
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
@@ -50,6 +63,10 @@ public class Book {
 	}
 
 	// getterit
+	public Long getId() {
+		return id;
+	}
+
 	public String getTitle() {
 		return title;
 	}
@@ -73,8 +90,8 @@ public class Book {
 	// toString
 	@Override
 	public String toString() {
-		return "Book [title=" + title + ", author=" + author + ", year=" + year + ", isbn=" + isbn + ", price=" + price
-				+ "]";
+		return "Book [id=" + id + "title=" + title + ", author=" + author + ", year=" + year + ", isbn=" + isbn
+				+ ", price=" + price + "]";
 	}
 
 }
