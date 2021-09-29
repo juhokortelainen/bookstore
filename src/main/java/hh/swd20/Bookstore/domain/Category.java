@@ -55,7 +55,8 @@ public class Category {
 
 	@Override
 	public String toString() {
-		return "Category [categoryid=" + categoryid + ", name=" + name + "]";
+		// return "Category [categoryid=" + categoryid + ", name=" + name + "]";
+		return name;
 		// ei kirjalistaa koska syntyisi ikuinen looppi
 	}
 	

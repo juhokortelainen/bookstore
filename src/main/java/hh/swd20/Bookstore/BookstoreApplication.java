@@ -41,8 +41,8 @@ public class BookstoreApplication {
 
 			log.info("add a couple of books");
 			// tallennetaan tietokantaan kaksi kirjaa
-			bookRepository.save(new Book("Veljeni, Leijonamieli", "Astrid Lindgren", 1973, "3849sd75834975", 12.50));
-			bookRepository.save(new Book("Paahde", "Louis Sachar", 1998, "20387jhlk47534", 7.99));
+			bookRepository.save(new Book("Veljeni, Leijonamieli", "Astrid Lindgren", 1973, "3849sd75834975", 12.50, category1));
+			bookRepository.save(new Book("Paahde", "Louis Sachar", 1998, "20387jhlk47534", 7.99, category2));
 
 			// tarkistetaan löytyykö tietokannasta lisätyt kirjat
 			log.info("fetch all books");
