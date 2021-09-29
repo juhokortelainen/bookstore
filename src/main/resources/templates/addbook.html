@@ -27,6 +27,14 @@
 		  	<label for="price">Price</label>
 			<input type="text" id="price" th:field="*{price}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<label for "categorylist">Category</label>
+			<select id="categorylist" class="form-control" name="Category">
+				<option value="1">Fantasy</option>
+				<option value="2">Action</option>
+				<option value="3">Horror</option>
+			</select>
+			<div style="clear: both; display: block; height: 10px;"></div>
 		  	
 			<input type="submit" value="Save"></input>
 		</form>

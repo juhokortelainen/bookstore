@@ -6,10 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import hh.swd20.Bookstore.domain.Book;
 import hh.swd20.Bookstore.domain.BookRepository;
+import hh.swd20.Bookstore.domain.CategoryRepository;
 
 @Controller
 public class BookController {
@@ -19,6 +19,9 @@ public class BookController {
 				 * attribuutti-olioksi
 				 */
 	private BookRepository repository;
+	
+	@Autowired
+	private CategoryRepository categoryrepository;
 
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String getGreeting() {
@@ -36,6 +39,7 @@ public class BookController {
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public String createBook(Model model) {
 		model.addAttribute("book", new Book());
+		model.addAttribute("categories", categoryrepository.findAll());
 		return "addbook";
 	}
 
