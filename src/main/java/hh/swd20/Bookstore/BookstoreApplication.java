@@ -9,6 +9,8 @@ import org.springframework.context.annotation.Bean;
 
 import hh.swd20.Bookstore.domain.Book;
 import hh.swd20.Bookstore.domain.BookRepository;
+import hh.swd20.Bookstore.domain.Category;
+import hh.swd20.Bookstore.domain.CategoryRepository;
 
 @SpringBootApplication
 public class BookstoreApplication {
@@ -20,8 +22,23 @@ public class BookstoreApplication {
 
 	// luodaan testidataa h2-tietokantaan
 	@Bean
-	public CommandLineRunner bookDemo(BookRepository bookRepository) {
+	public CommandLineRunner bookDemo(BookRepository bookRepository, CategoryRepository categoryrepository) {
 		return (args) -> {
+			// luodaan muutama kategoria
+			log.info("Save some sample categories");
+			Category category1 = new Category("Scifi");
+			categoryrepository.save(category1);
+			Category category2 = new Category("Comic");
+			categoryrepository.save(category2);
+			Category category3 = new Category("Fiction");
+			categoryrepository.save(category3);
+
+			// logitetaan tietokannan kategoriat
+			log.info("Fetch all categories");
+			for (Category category : categoryrepository.findAll()) {
+				log.info(category.toString());
+			}
+
 			log.info("add a couple of books");
 			// tallennetaan tietokantaan kaksi kirjaa
 			bookRepository.save(new Book("Veljeni, Leijonamieli", "Astrid Lindgren", 1973, "3849sd75834975", 12.50));
