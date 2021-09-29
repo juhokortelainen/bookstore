@@ -26,11 +26,11 @@ public class BookstoreApplication {
 		return (args) -> {
 			// luodaan muutama kategoria
 			log.info("Save some sample categories");
-			Category category1 = new Category("Scifi");
+			Category category1 = new Category("Fantasy");
 			categoryrepository.save(category1);
-			Category category2 = new Category("Comic");
+			Category category2 = new Category("Action");
 			categoryrepository.save(category2);
-			Category category3 = new Category("Fiction");
+			Category category3 = new Category("Horror");
 			categoryrepository.save(category3);
 
 			// logitetaan tietokannan kategoriat
