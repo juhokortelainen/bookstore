@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Category {
 	@Id
@@ -16,6 +18,8 @@ public class Category {
 	private String name;
 	
 	@OneToMany(mappedBy = "category")
+	// JsonIgnoreProperties - one way to avoid infinite loop during JSON serilization/deserilization with bidricetional relationships
+	@JsonIgnoreProperties ("category")
 	private List<Book> books; // Category @OneToMany Book
 
 	public Category() {

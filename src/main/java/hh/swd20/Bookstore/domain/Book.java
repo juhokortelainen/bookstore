@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity // kuvataan vastaavan tietokantataulun rakenne
 public class Book {
 
@@ -21,6 +23,8 @@ public class Book {
 	private double price;
 	
 	@ManyToOne // Book @ManyToOne Category
+	// JsonIgnoreProperties - one way to avoid infinite loop during JSON serilization/deserilization with bidricetional relationships
+	@JsonIgnoreProperties ("books")
 	@JoinColumn(name = "categoryid")
 	private Category category;
 
