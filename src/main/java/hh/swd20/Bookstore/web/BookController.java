@@ -68,7 +68,7 @@ public class BookController {
 	}
 
 	// poistetaan kirja id:n perusteella
-	@PreAuthorize(value = "hasRole('ADMIN')")
+	@PreAuthorize(value = "hasAuthority('ADMIN')")
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String deleteBook(@PathVariable("id") Long id, Model model) {
 		repository.deleteById(id);
@@ -76,7 +76,7 @@ public class BookController {
 	}
 
 
-	@PreAuthorize(value = "hasRole('ADMIN')")
+	@PreAuthorize(value = "hasAuthority('ADMIN')")
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	public String editBook(@PathVariable("id") Long id, Model model) {
 		Book book = repository.findById(id).orElse(null);
